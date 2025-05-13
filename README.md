@@ -70,3 +70,82 @@ Se evaluará la solución en función de los siguientes criterios:
 - Uso adecuado de Java 17, Spring Boot 3.4.x, H2, JWT, OpenAPI y Swagger.
 - Claridad y completitud de la documentación.
 - **Puntos extras si la generación de la API se realizo mediante API First**
+
+---
+
+## 💻 Implementación de Francisca Martínez
+
+### 🔧 Tecnologías Utilizadas
+
+- Java 17
+- Spring Boot 3.1.5
+- Spring Security con JWT
+- JPA con H2 Database (modo memoria)
+- Lombok
+- Swagger/OpenAPI 3 (`springdoc-openapi`)
+- JUnit 5 + Mockito
+
+### 🚀 Endpoints Principales
+
+| Método | Endpoint              | Descripción                          |
+|--------|------------------------|--------------------------------------|
+| POST   | `/api/auth/login`      | Autenticación y generación de token |
+| GET    | `/api/tasks`           | Obtener todas las tareas            |
+| GET    | `/api/tasks/{id}`      | Obtener tarea por ID                |
+| POST   | `/api/tasks`           | Crear nueva tarea                   |
+| PUT    | `/api/tasks/{id}`      | Actualizar tarea                    |
+| DELETE | `/api/tasks/{id}`      | Eliminar tarea                      |
+
+---
+
+### 🧪 Pruebas Unitarias
+
+Incluye pruebas para:
+- `TaskService`
+- `AuthController`
+- `TaskController`
+- `UserDetailsServiceImpl`
+- `TaskRepository` (con `@DataJpaTest`)
+
+Ejecuta los tests con:
+
+```bash
+mvn test
+```
+
+---
+
+### 🔐 Autenticación
+
+1. Realizar `POST` a `/api/auth/login` con JSON:
+
+```json
+{
+  "username": "admin",
+  "password": "admin123"
+}
+```
+
+2. Copiar el token JWT de la respuesta.
+
+3. Agregarlo en los headers de tus peticiones como:
+
+```
+Authorization: Bearer <token>
+```
+
+---
+
+### 📄 Swagger UI
+
+Accede a la documentación interactiva en:  
+[http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
+
+---
+
+### 📂 Archivos Incluidos
+
+- `taskmanagementapi.postman_collection.json` → colección de Postman con token propagado automáticamente.
+- `openapi.yml` → documentación OpenAPI del sistema de tareas.
+
+---
